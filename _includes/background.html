@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<!--My image-->
+	<div id="image-container">
+		<div id="background-image"></div>
+	</div>
+	<style>
+		#background-image {
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			opacity: 0.75;
+			z-index: 999;
+			width: min(20vw, 20vh);
+			height: min(20vw, 20vh);
+			overflow: hidden;
+			/*background-image: url();*/
+			background-size: cover;
+		}
+	</style>
+	<script type="text/javascript">
+		var setstickerimg = function () {
+			var bgcolor = window.getComputedStyle(document.documentElement).getPropertyValue("--main-bg");
+			document.getElementById("background-image").style.backgroundImage =
+				"url('/notes/assets/img/Chitanda-Eru" + (bgcolor == "white" ? "" : "_inversed") + ".png')";
+		};
+		setstickerimg();
+
+		var switchimg = function () {
+			if (document.getElementById("background-image").style.backgroundImage.includes("_inversed")) {
+				document.getElementById("background-image").style.backgroundImage = "url('/notes/assets/img/Chitanda-Eru.png')";
+			}
+			else {
+				document.getElementById("background-image").style.backgroundImage = "url('/notes/assets/img/Chitanda-Eru_inversed.png')";
+			}
+		};
+		document.getElementById("mode-toggle").addEventListener('click', switchimg);
+	</script>
+</body>
+</html>
